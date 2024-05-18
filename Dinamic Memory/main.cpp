@@ -20,7 +20,6 @@ void main()
 	int value;
 	cout << "¬ведите добавл€ет значение: "; cin >> value;
 	arr = push_back(arr, n, value);
-
 	Print(arr, n);
 	delete[] arr;
 }
