@@ -5,24 +5,25 @@ using namespace std;
 
 void FillRand(int arr[], const int n);
 void Print(int arr[], const int n);
-int* push_back(int arr[], int& n; int value)
+int* push_back(int arr[], int& n, int value);
 
 void main()
 {
 	setlocale(LC_ALL, "");
 	int n = 5;
-	cout << "Ââåäèòå ðàçìåð ìàññèâà: "; cin >> n;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ð¼Ð°ÑÑÐ¸Ð²Ð°: "; cin >> n;
 	int* arr = new int[n];
 
 	FillRand(arr, n);
 	Print(arr, n);
-	int value;
-	cout << "Ââåäèòå äîáàâëÿåò çíà÷åíèå: "; cin >> value;
-	arr = push_back(arr[], n; value);
 
+	int value;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð¾Ð±Ð°Ð²Ð»ÑÐµÑ‚ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ: "; cin >> value;
+	arr = push_back(arr, n, value);
 	Print(arr, n);
 	delete[] arr;
 }
+
 void FillRand(int arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
@@ -30,6 +31,7 @@ void FillRand(int arr[], const int n)
 		*(arr + i) = rand() % 100;
 	}
 }
+
 void Print(int arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
@@ -39,8 +41,10 @@ void Print(int arr[], const int n)
 	cout << endl;
 }
 
-int* push_back(int arr[], int& n; int value)
+int* push_back(int arr[], int& n, int value)
 {
+	int* buffer = new int[n + 1];
+
 	for (int i = 0; i < n; i++)
 	{
 		buffer[i] = arr[i];
@@ -52,9 +56,9 @@ int a = 2;
 int b = 3;
 a = b;
 arr = buffer;
-
 arr[n] = value;
 n++;
 return arr;
 }
+
 
