@@ -18,7 +18,7 @@ int* pop_front(int arr[], int& n);
 int* erase(int arr[], int& n, const int index);
 
 
-#define DINAMIC_MEMORY_1
+//#define DINAMIC_MEMORY_1
 #define DINAMIC_MEMORY_2
 
 void main()
@@ -39,6 +39,12 @@ void main()
 
 	cout << "Введите добавлемое значение: "; cin >> value;
 	arr = push_front(arr, n, value);
+	Print(arr, n);
+
+	arr = pop_back(arr, n);
+	Print(arr, n);
+
+	arr = pop_front(arr, n);
 	Print(arr, n);
 
 	int index;
