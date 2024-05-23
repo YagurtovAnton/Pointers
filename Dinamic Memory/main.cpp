@@ -65,7 +65,7 @@ void main()
 	cout << "Введите кол-во строк: "; cin >> rows;
 	cout << "Введите кол-во элементов строки: "; cin >> cols;
 
-#ifdef error
+//#ifdef error
 	int** arr = new int* [rows];
 
 	for (int i = 0; i < rows; i++)
@@ -81,7 +81,7 @@ void main()
 		delete arr[i];
 	}
 	delete arr;
-#endif // error
+//#endif // error
 
 }
  
@@ -122,16 +122,6 @@ void Print(int** arr, const int rows, const int cols)
 		cout << endl;
 	}
 	cout << endl;
-}
-int* insert(int arr[], int& n, const int value, const int index)
-{
-	int* buffer = new int[n + 1];
-	for (int i = 0; i < index; i++)buffer[i] = arr[i];
-	for (int i = index; i < n; i++)buffer[i + 1] = arr[i];
-	delete[] arr;
-	buffer [index] = value;
-	n++;
-	return buffer;
 }
 
 int* push_back(int arr[], int& n, int value)
