@@ -3,7 +3,7 @@ using namespace std;
 
 #define  tab "\t"
 
-void FillRand(int arr[], const int n);
+void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
 void FillRand(int** arr, const int rows, const int cols);
 
 void Print(int arr[], const int n);
@@ -16,6 +16,15 @@ int* insert(int arr[], int& n, const int value,const int index);
 int* pop_back(int arr[], int& n);
 int* pop_front(int arr[], int& n);
 int* erase(int arr[], int& n, const int index);
+
+int** push_row_back(int** arr, int& rows, const int cols);
+int** push_row_front(int** arr, int& rows, const int cols);
+int** insert_row(int** arr, int& rows, const int cols, int position);
+
+int** pop_row_back(int** arr, int& rows, const int cols);
+
+void push_col_back(int** arr, const int rows, int& cols);
+
 
 
 //#define DINAMIC_MEMORY_1
@@ -64,31 +73,58 @@ void main()
 	int cols;
 	cout << "Введите кол-во строк: "; cin >> rows;
 	cout << "Введите кол-во элементов строки: "; cin >> cols;
-
-//#ifdef error
-	int** arr = new int* [rows];
-
-	for (int i = 0; i < rows; i++)
-	{
-		arr[i] = new int[cols];
-	}
+	int** arr = Allocate(rows, cols);
 
 	FillRand(arr, rows, cols);
 	Print(arr, rows, cols);
 
-	for (int i = 0; i < rows; i++)
-	{
-		delete arr[i];
-	}
-	delete arr;
-//#endif // error
+	arr = push_row_back(arr, rows, cols);
+	FillRand(arr[rows - 1], cols, 100, 1000);
+	Print(arr, rows, cols);
+
+	arr = push_row_front(arr, rows, cols);
+	FillRand(arr[0], cols, 100, 1000);
+	Print(arr, rows, cols);
+
+	int index;
+	cout << "Введите позицию добавляемой строки: "; cin >> index;
+	arr = insert_row(arr, rows, cols, index);
+	if (index < rows)FillRand(arr[index], cols, 100, 1000);
+	Print(arr, rows, cols);
+
+	arr = pop_row_back(arr, rows, cols);
+	Print(arr, rows, cols);
+
+	push_col_back(arr, rows, cols);
+	Print(arr, rows, cols);
+
+	Clear(arr, rows);
 
 }
-void FillRand(int arr[], const int n)
+int** Allocate(const int rows, const int cols)
+{
+	int** arr = new int* [rows];
+	for (int i = 0; i < rows; i++)
+	{
+		arr[i] = new int[cols];
+	}
+	return arr;
+}
+void Clear(int** arr, const int rows)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		delete[] arr[i];
+	}
+	delete[] arr;
+}
+
+void FillRand(int arr[], const int n, int minRand, int maxRand)
 {
 	for (int i = 0; i < n; i++)
 	{
-		*(arr + i) = rand() % 100;
+		*(arr + i) = rand() % (maxRand - minRand) + minRand;
+		//Обращение к элементам массива через арифметику указателей и оператор разыменования
 	}
 }
 void FillRand(int** arr, const int rows, const int cols)
@@ -101,6 +137,7 @@ void FillRand(int** arr, const int rows, const int cols)
 		}
 	}
 }
+
 
 void Print(int arr[], const int n)
 {
@@ -194,6 +231,63 @@ int* erase(int arr[], int& n, const int index)
 	}
 	delete[] arr;
 	return buffer;
+}
+int** push_row_back(int** arr, int& rows, const int cols)
+{
+
+	//1) Создаем буферный массив указателей нужного размера:
+	int** buffer = new int* [rows + 1];
+	//2) Копируем адреса строк из исходного массива указателей в буферный:
+	for (int i = 0; i < rows; i++)buffer[i] = arr[i];
+	//3) Удаляем исходный массив указателей:
+	delete[] arr;
+	//4) Создаем новую строку, и помещаем ее в конц массива указателей:
+	buffer[rows] = new int[cols] {};
+	//5) После добавления строки количество строк увеличивается на 1:
+	rows++;
+	//6) Возвращаем новый массив указателей на место вызова:
+	return buffer;
+}
+int** push_row_front(int** arr, int& rows, const int cols)
+{
+	int** buffer = new int* [rows + 1];
+	for (int i = 0; i < rows; i++)buffer[i + 1] = arr[i];
+	delete[] arr;
+	buffer[0] = new int[cols] {};
+	rows++;
+	return buffer;
+}
+int** insert_row(int** arr, int& rows, const int cols, int position)
+{
+	if (position >= rows)return arr;
+	int** buffer = new int* [rows + 1];
+	for (int i = 0; i < position; i++)buffer[i] = arr[i];
+	for (int i = position; i < rows; i++)buffer[i + 1] = arr[i];
+	delete[] arr;
+	buffer[position] = new int[cols];
+	rows++;
+	return buffer;
+}
+
+int** pop_row_back(int** arr, int& rows, const int cols)
+{
+	int** buffer = new int* [--rows];
+	for (int i = 0; i < rows; i++)buffer[i] = arr[i];
+	delete[] arr[rows];
+	delete[] arr;
+	return buffer;
+}
+
+void push_col_back(int** arr, const int rows, int& cols)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		int* buffer = new int[cols + 1] {};
+		for (int j = 0; j < cols; j++)buffer[j] = arr[i][j];
+		delete[] arr[i];
+		arr[i] = buffer;
+	}
+	cols++;
 }
 
 
