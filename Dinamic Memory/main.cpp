@@ -3,6 +3,9 @@ using namespace std;
 
 #define  tab "\t"
 
+int** Allocate(const int rows, const int cols);
+void Clear(int** arr, const int rows);
+
 void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
 void FillRand(int** arr, const int rows, const int cols);
 
