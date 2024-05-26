@@ -30,8 +30,8 @@ void push_col_back(int** arr, const int rows, int& cols);
 
 
 
-//#define DINAMIC_MEMORY_1
-#define DINAMIC_MEMORY_2
+#define DINAMIC_MEMORY_1
+//#define DINAMIC_MEMORY_2
 
 void main()
 {
@@ -81,7 +81,8 @@ void main()
 	FillRand(arr, rows, cols);
 	Print(arr, rows, cols);
 
-	arr = push_row_back(arr, rows, cols);
+	/*arr = push_row_back(arr, rows, cols);
+	FillRand(arr[rows - 1], cols, 100, 1000);
 	FillRand(arr[rows - 1], cols, 100, 1000);
 	Print(arr, rows, cols);
 
@@ -102,7 +103,7 @@ void main()
 	Print(arr, rows, cols);
 
 	Clear(arr, rows);
-
+	*/
 }
 int** Allocate(const int rows, const int cols)
 {
@@ -123,6 +124,13 @@ void Clear(int** arr, const int rows)
 }
 
 void FillRand(int arr[], const int n, int minRand, int maxRand)
+{
+	for (int i = 0; i < n; i++)
+	{
+		*(arr + i) = rand() % (maxRand - minRand) + minRand;
+		//Обращение к элементам массива через арифметику указателей и оператор разыменования
+	}
+}void FillRand(int arr[], const int n, int minRand, int maxRand)
 {
 	for (int i = 0; i < n; i++)
 	{
