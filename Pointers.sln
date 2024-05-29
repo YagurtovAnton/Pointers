@@ -11,7 +11,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "References", "References\Re
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dinamic Memory", "Dinamic Memory\Dinamic Memory.vcxproj", "{8642F945-AEFB-4AB1-B328-3C6A35AD2744}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Splint", "Splint\Splint.vcxproj", "{60724121-0547-4FDE-87A9-42B71F293529}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Split", "Splint\Splint.vcxproj", "{60724121-0547-4FDE-87A9-42B71F293529}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DynamicMemory 2", "DynamicMemory 2\DynamicMemory 2.vcxproj", "{D0DCEC71-363B-4C68-8AC3-2342088D7112}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dynamo", "Dynamo\Dynamo.vcxproj", "{F76CAB6E-9564-4C90-B3B2-0E8CF4610B1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +65,22 @@ Global
 		{60724121-0547-4FDE-87A9-42B71F293529}.Release|x64.Build.0 = Release|x64
 		{60724121-0547-4FDE-87A9-42B71F293529}.Release|x86.ActiveCfg = Release|Win32
 		{60724121-0547-4FDE-87A9-42B71F293529}.Release|x86.Build.0 = Release|Win32
+		{D0DCEC71-363B-4C68-8AC3-2342088D7112}.Debug|x64.ActiveCfg = Debug|x64
+		{D0DCEC71-363B-4C68-8AC3-2342088D7112}.Debug|x64.Build.0 = Debug|x64
+		{D0DCEC71-363B-4C68-8AC3-2342088D7112}.Debug|x86.ActiveCfg = Debug|Win32
+		{D0DCEC71-363B-4C68-8AC3-2342088D7112}.Debug|x86.Build.0 = Debug|Win32
+		{D0DCEC71-363B-4C68-8AC3-2342088D7112}.Release|x64.ActiveCfg = Release|x64
+		{D0DCEC71-363B-4C68-8AC3-2342088D7112}.Release|x64.Build.0 = Release|x64
+		{D0DCEC71-363B-4C68-8AC3-2342088D7112}.Release|x86.ActiveCfg = Release|Win32
+		{D0DCEC71-363B-4C68-8AC3-2342088D7112}.Release|x86.Build.0 = Release|Win32
+		{F76CAB6E-9564-4C90-B3B2-0E8CF4610B1A}.Debug|x64.ActiveCfg = Debug|x64
+		{F76CAB6E-9564-4C90-B3B2-0E8CF4610B1A}.Debug|x64.Build.0 = Debug|x64
+		{F76CAB6E-9564-4C90-B3B2-0E8CF4610B1A}.Debug|x86.ActiveCfg = Debug|Win32
+		{F76CAB6E-9564-4C90-B3B2-0E8CF4610B1A}.Debug|x86.Build.0 = Debug|Win32
+		{F76CAB6E-9564-4C90-B3B2-0E8CF4610B1A}.Release|x64.ActiveCfg = Release|x64
+		{F76CAB6E-9564-4C90-B3B2-0E8CF4610B1A}.Release|x64.Build.0 = Release|x64
+		{F76CAB6E-9564-4C90-B3B2-0E8CF4610B1A}.Release|x86.ActiveCfg = Release|Win32
+		{F76CAB6E-9564-4C90-B3B2-0E8CF4610B1A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
