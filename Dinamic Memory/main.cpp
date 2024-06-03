@@ -34,6 +34,8 @@ template<typename T>T** insert_row(T** arr, int& rows, const int cols, int posit
 
 template<typename T>T** pop_row_back(T** arr, int& rows, const int cols);
 template<typename T>void push_col_back(T** arr, const int rows, int& cols);
+template<typename T>void push_col_front(T** arr, const int rows, int& cols);
+template<typename T>void insert_col(T** arr, const int rows, int& cols, int index);
 
 //#define DYNAMIC_MEMORY_1
 #define DYNAMIC_MEMORY_2
@@ -111,6 +113,13 @@ void main()
 	push_col_back(arr, rows, cols);
 	Print(arr, rows, cols);
 
+	push_col_front(arr, rows, cols);
+	Print(arr, rows, cols);
+
+	cout << "Введите позицию добавляемого столбца: "; cin >> index;
+	insert_col(arr, rows, cols, index);
+	Print(arr, rows, cols);
+
 	/*for (int i = 0; i < rows; i++)
 	{
 		delete[] arr[i];
@@ -177,6 +186,7 @@ void FillRand(int** arr, const int rows, const int cols, int minRand, int maxRan
 		}
 	}
 }
+
 void FillRand(double** arr, const int rows, const int cols, int minRand, int maxRand)
 {
 	minRand *= 100;
@@ -349,6 +359,24 @@ template<typename T>void push_col_back(T** arr, const int rows, int& cols)
 		for (int j = 0; j < cols; j++)buffer[j] = arr[i][j];
 		delete[] arr[i];
 		arr[i] = buffer;
+	}
+	cols++;
+}
+template<typename T>void push_col_front(T** arr, const int rows, int& cols)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		arr[i] = push_front(arr[i], cols, T());
+		cols--;
+	}
+	cols++;
+}
+template<typename T>void insert_col(T** arr, const int rows, int& cols, int index)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		arr[i] = insert(arr[i], cols, T(), index);
+		cols--;
 	}
 	cols++;
 }
